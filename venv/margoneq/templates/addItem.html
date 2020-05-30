@@ -1,0 +1,249 @@
+{% extends "base.html" %}
+
+{% block body_block %}
+{% if user.is_authenticated %}
+<div class="container">
+    <form autocomplete="off" method="POST" action="{% url 'myapp:addItem' %}">
+        {% csrf_token %}
+        <h2> Statystyki ogólne</h2>
+        <div class="sekcja">
+        <div class = "formPool">
+         <label for="itemname">Nazwa przedmiotu:</label>
+        {{formm.itemname}}
+        </div>
+        <div class = "formPool">
+         <label for="typ">Typ przedmiotu:</label>
+        {{formm.typ}}
+        </div>
+        <div class = "formPool">
+         <label for="lvl">LVL:</label>
+        {{formm.lvl}}
+        </div>
+        <div class = "formPool">
+         <label for="klasa">Klasa przedmiotu:</label>
+        {{formm.klasa}}
+        </div>
+        <div class = "formPool">
+         <label for="bonus">Bonus Legendarny:</label>
+        {{formm.bonus}}
+        </div>
+        <div class = "formPool">
+         <label for="img">URL obrazka:</label>
+        {{formm.img}}
+        </div>
+        <div class = "formPool">
+         <label for="pal">Paladyn:</label>
+        {{formm.pal}}
+        </div><div class = "formPool">
+         <label for="mag">Mag:</label>
+        {{formm.mag}}
+        </div><div class = "formPool">
+         <label for="woj">Wojownik:</label>
+        {{formm.woj}}
+        </div><div class = "formPool">
+         <label for="low">Łowca:</label>
+        {{formm.low}}
+        </div><div class = "formPool">
+         <label for="tro">Tropiciel:</label>
+        {{formm.tro}}
+        </div><div class = "formPool">
+         <label for="tan">Tancerz Ostrzy:</label>
+        {{formm.tan}}
+        </div>
+            </div>
+        <div class = "atak sekcja">
+        <h2> Ataki:</h2>
+            <div class = "formPool">
+         <label for="atakfizmin">Minimalny Atak Fizyczny:</label>
+        {{formm.atakfizmin}}
+        </div>
+            <div class = "formPool">
+         <label for="atakFizMax">Maksymalny Atak Fizyczny:</label>
+        {{formm.atakFizMax}}
+        </div>
+            <div class = "formPool">
+         <label for="atakOg">Atak od ognia:</label>
+        {{formm.atakOg}}
+        </div>
+            <div class = "formPool">
+         <label for="atakZim">Atak od zimna:</label>
+        {{formm.atakZim}}
+        </div>
+            <div class = "formPool">
+         <label for="atakBlysk">Atak od błyskawic:</label>
+        {{formm.atakBlysk}}
+        </div>
+            <div class = "formPool">
+         <label for="grsil">Obrażenia od głębokiej rany:</label>
+        {{formm.grsil}}
+        </div>
+            <div class = "formPool">
+         <label for="grprc">Szansa na głęboką ranę:</label>
+        {{formm.grprc}}
+        </div>
+            <div class = "formPool">
+         <label for="trucizna">Obrażenia od trucizny:</label>
+        {{formm.trucizna}}
+        </div>
+
+        </div>
+        <div class="passiveonatack sekcja">
+            <h2>Passywne offensywne:</h2>
+            <div class = "formPool">
+                     <label for="ck">Cios krytyczny:</label>
+                    {{formm.ck}} %
+            </div>
+            <div class = "formPool">
+                 <label for="niszczMan">Nieszczenie many podczas ataku:</label>
+                {{formm.niszMan}}
+            </div>
+                <div class = "formPool">
+             <label for="niszczEne">Niszczenie energi podczas ataku:</label>
+            {{formm.niszEne}}
+            </div>
+                <div class = "formPool">
+             <label for="niszPan">Niszczenie pancerza podczas ataku:</label>
+            {{formm.niszPan}}
+            </div>
+                <div class = "formPool">
+             <label for="niszAbs">Niszczenie absorbcji przed ciosem:</label>
+            {{formm.niszAbs}}
+            </div>
+                <div class = "formPool">
+             <label for="fizycznyck">Siła krytyka fizycznego:</label>
+            {{formm.fizycznyck}} %
+            </div>
+                <div class = "formPool">
+             <label for="magicznyck">Siła krytyka magicznego:</label>
+            {{formm.magicznyck}} %
+            </div>
+                <div class = "formPool">
+             <label for="spowalniaCel">Spowalnia cel o:</label>
+            {{formm.spowalniaCel}} %
+            </div>
+             <div class = "formPool">
+                 <label for="przebicie">Szansa na przebicie:</label>
+                {{formm.przebicie}} %
+            </div>
+             <div class = "formPool">
+                 <label for="kontra">Szansa na kontrę po krytyku:</label>
+                {{formm.kontra}} %
+            </div>
+        </div>
+
+        <div class="defen sekcja">
+            <h2>Defensywne:</h2>
+             <div class = "formPool">
+                 <label for="panc">Pancerz:</label>
+                {{formm.panc}}
+            </div>
+             <div class = "formPool">
+                 <label for="absFiz">Absorbcja fizyczna:</label>
+                {{formm.absFiz}}
+            </div>
+             <div class = "formPool">
+                 <label for="absMag">Absorbcja magiczna:</label>
+                {{formm.absMag}}
+            </div>
+            <div class = "formPool">
+                 <label for="blok">Blok:</label>
+                {{formm.blok}}
+            </div>
+             <div class = "formPool">
+                 <label for="blokprze">Szansa na zablokowanie przebicia:</label>
+                {{formm.blokprze}}%
+            </div>
+             <div class = "formPool">
+                 <label for="odpOg">Odporność na ogień:</label>
+                {{formm.odpOg}}
+            </div>
+              <div class = "formPool">
+                 <label for="odpZim">Odporność na zimno:</label>
+                {{formm.odpZim}}
+            </div>
+              <div class = "formPool">
+                 <label for="odpBlysk">Odporność na błyskawice:</label>
+                {{formm.odpBlysk}}
+            </div>
+              <div class = "formPool">
+                 <label for="odpTrut">Odporność na trucizne:</label>
+                {{formm.odpTrut}}
+            </div>
+
+        </div>
+        <div class="sekcja passdef">
+            <h2>Statystyki defensywne aktywne:</h2>
+             <div class = "formPool">
+                 <label for="unik">Unik:</label>
+                {{formm.unik}}
+            </div>
+             <div class = "formPool">
+                 <label for="obnUniku">Obniżanie uniku:</label>
+                {{formm.obnUniku}}
+            </div>
+             <div class = "formPool">
+                 <label for="obnCk">Obniżanie ciosu krytycznego:</label>
+                {{formm.obnCk}}
+            </div>
+             <div class = "formPool">
+                 <label for="obnSA">Obiżania SA:</label>
+                {{formm.obnSA}}
+            </div>
+
+        </div>
+        <div class="sekcja char">
+            <h2>Statystyki postaci:</h2>
+             <div class = "formPool">
+                 <label for="SA">SA:</label>
+                {{formm.SA}}%
+            </div>
+             <div class = "formPool">
+                 <label for="hp">Życie:</label>
+                {{formm.hp}}
+            </div>
+
+             <div class = "formPool">
+                 <label for="wszystkieCechy">Wszystkie Cechy:</label>
+                {{formm.wszystkieCechy}}
+            </div>
+               <div class = "formPool">
+                 <label for="sil">Siła:</label>
+                {{formm.sil}}
+            </div>
+             <div class = "formPool">
+                 <label for="zren">Zręczność:</label>
+                {{formm.zren}}
+            </div>
+             <div class = "formPool">
+                 <label for="inte">Intelekt:</label>
+                {{formm.inte}}
+            </div>
+             <div class = "formPool">
+                 <label for="mana">Mana:</label>
+                {{formm.mana}}
+            </div>
+             <div class = "formPool">
+                 <label for="energia">Energia:</label>
+                {{formm.energia}}
+            </div>
+             <div class = "formPool">
+                 <label for="przywr">Leczenie Turowe:</label>
+                {{formm.przywr}}
+            </div>
+            <div class = "formPool">
+                 <label for="description">Opis:</label>
+                {{formm.description}}
+            </div>
+        </div>
+        </br>
+        <input type="submit" class=" btn btn-dark" value="Dodaj przedmiot"/>
+    </form>
+
+</div>
+{% else %}
+<div class="jumbotron purplebg">
+    <h2>Aby dodać przedmiot musisz się <a href="{% url 'myapp:user_login' %}">Zalogować</a></h2>
+    <h6>lub dokonaj <a href="{% url 'myapp:register' %}">rejestracji </a></h6>
+</div>
+{%endif%}
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+<link rel="stylesheet" href="/static/css/log_css.css">
+<div class="log-form">
+{% if user.is_authenticated %}
+    <div style="padding-right:2%;padding-left:2%;">
+         <br>
+                <h2> Jesteś już zalogowany </h2>
+        <br>
+    </div>
+{% else %}
+
+    <h2>Logowanie</h2>
+    {% if failed %}
+    <center style="color:white;">Błędny login, lub hasło</center>
+    {% endif %}
+  <form method="post" enctype="multipart/form-data"  autocomplete="off" >
+      {% csrf_token %}
+        <input type="text" name="username" placeholder="login" required/>
+        <br>
+        <input type="password" name="password" placeholder="hasło" required />
+        <br>
+        <button type="submit" class="button">Zaloguj</button>
+      </form>
+    <h3>Nie masz konta? <a href="{% url 'myapp:register' %}">Zarejestruj się</a></h3>
+{% endif %}
+</div>
+{% endblock %}

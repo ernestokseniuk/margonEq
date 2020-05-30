@@ -1,0 +1,260 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 itemDiv">
+
+            <div  class="row" ><div class="col-9 purplebg" style="padding-left:3%;"> Przedmiot nr.: {{item.id}}</div><div class="col-3 purplebg">Autor: <a href="{% url 'myapp:userdet' item.author_id %}"> {{item.author}}</a> </div>
+                <div  class="itemphoto col-3"><img src="{{item.img}}" style = "border:2px solid {{item.klasa.color}}" /></div>
+
+    <div class= "itemstats col-8">
+        <ul>
+            <li style="text-align:center;">{{item.itemname}}</li>
+            </br>
+            <li style="text-align:center; color:{{item.klasa.color}} ">* {{item.klasa.typ}} *</li>
+                 <li> Typ: {{item.typ}}</li>
+            {% if item.atakFizMax > 1 and item.atakfizmin <= item.atakFizMax%}
+                <li> Atak Fizyczny: {{item.atakfizmin}} - {{item.atakFizMax}}</li>
+            {% endif %}
+             {% if item.atakOg > 0%}
+            <li > Obrażenia od ognia: <span style="color:red;">~{{item.atakOg}}</span></li>
+            {% endif %}
+            {% if item.atakZim > 0%}
+            <li > Obrażenia od zimna: <span style="color:lightblue;">+{{item.atakZim}}</span></li>
+            {% endif %}
+            {% if item.atakBlysk > 0%}
+            <li > Obrażenia od błyskawic: <span style="color:yellow;">0 - {{item.atakBlysk}}</span></li>
+            {% endif %}
+            {% if item.spowalniaCel > 0 %}
+            <li > Spowalnia cel o: <span>{{item.spowalniaCel}}%</span></li>
+            {% endif %}
+             {% if item.niszAbs > 0 %}
+            <li > Niszczy <span>{{item.niszAbs}} absorbcji przed ciosem</span></li>
+            {% endif %}
+             {% if item.niszEne > 0 %}
+            <li > Niszczy <span>{{item.niszEne}} energii podczas ataku</span></li>
+            {% endif %}
+             {% if item.niszMan > 0 %}
+            <li > Niszczy <span>{{item.niszMan}} many podczas ataku</span></li>
+            {% endif %}
+             {% if item.niszPan > 0 %}
+            <li > Niszczy <span>{{item.niszPan}} pancerza podczas ataku</span></li>
+            {% endif %}
+             {% if item.trucizna > 0 %}
+            <li > Obrażenia od trucizny: <span style="color:green;">+{{item.trucizna}}</span></li>
+            {% endif %}
+               {% if item.grsil > 0 and item.grprc > 0%}
+                {% if item.grprc > 100%}
+                     <li > 100% sznas na <span >{{item.grsil}} obrażeń od głębokiej rany</span></li>
+                {% else %}
+                    <li > {{item.grprc}} sznas na <span >{{item.grsil}} obrażeń od głębokiej rany</span></li>
+                {% endif %}
+            {% endif %}
+             {% if item.niszczOdporn > 0 %}
+            <li >Obniża odporność <span>{{item.niszczOdporn}}% podczas ataku</span></li>
+            {% endif %}
+              {% if item.ck > 0 %}
+            <li > Cios Krytyczny <span>{{item.ck}}%</span></li>
+            {% endif %}
+              {% if item.fizycznyck > 0 %}
+            <li >Siła krytyka fizycznego  <span>{{item.fizycznyck}}%</span></li>
+            {% endif %}
+              {% if item.magicznyck > 0 %}
+            <li >Siła krytyka magicznego: <span>{{item.magicznyck}}%</span></li>
+            {% endif %}
+                {% if item.przebicie > 100%}
+                     <li > 100% sznas na <span >przebicie pancerza</span></li>
+                {% elif item.przebicie > 0%}
+                    <li > {{item.przebicie}}% szans na <span >przebicie pancerza</span></li>
+                {% endif %}
+            {% if item.kontra > 0 %}
+                {% if item.kontra > 100%}
+                     <li > 100% sznas na <span >kontrę po krytyku</span></li>
+                {% else %}
+                    <li > {{item.kontra}}% szans na <span >kontrę po krytyku</span></li>
+                {% endif %}
+            {% endif %}
+            {% if item.panc > 0 %}
+            <li >Pancerz: <span>{{item.panc}}</span></li>
+            {% endif %}
+             {% if item.blok > 0 %}
+            <li >Blok: <span>+{{item.blok}}</span></li>
+            {% endif %}
+             {% if item.absMag > 0 %}
+            <li >Absorbcja magiczna: <span>{{item.absMag}}</span></li>
+            {% endif %}
+             {% if item.absFiz > 0 %}
+            <li >Absorbcja fizyczna: <span>{{item.absFiz}}</span></li>
+            {% endif %}
+             {% if item.blokprze > 100 %}
+            <li >Szansa na zablokowanie przebicia:  <span>100%</span></li>
+            {%elif item.blokprze > 0%}
+            <li> Szansa na zablokowania przebicia: <span>{{item.blokprze}}%</span></li>
+            {% endif %}
+            {% if item.odpOg > 0 %}
+            <li > Odporność na ogień: <span style="color:red;">+{{item.odpOg}}%</span></li>
+            {% endif %}
+            {% if item.odpZim > 0 %}
+            <li >Odporność na zimno: <span style="color:lightblue;">+{{item.odpZim}}%</span></li>
+            {% endif %}
+            {% if item.odpBlysk > 0 %}
+            <li > Odporność na błyskawice: <span style="color:yellow;">+{{item.odpBlysk}}%</span></li>
+            {% endif %}
+            {% if item.odpTrut > 0 %}
+            <li > Odporność na truciznę: <span style="color:green;">+{{item.odpTrut}}%</span></li>
+            {% endif %}
+             {% if item.odpOg < 0 %}
+            <li > Odporność na ogień: <span style="color:red;">{{item.odpOg}}%</span></li>
+            {% endif %}
+            {% if item.odpZim < 0 %}
+            <li >Odporność na zimno: <span style="color:lightblue;">{{item.odpZim}}%</span></li>
+            {% endif %}
+            {% if item.odpBlysk < 0 %}
+            <li > Odporność na błyskawice: <span style="color:yellow;">{{item.odpBlysk}}%</span></li>
+            {% endif %}
+            {% if item.odpTrut < 0 %}
+            <li > Odporność na truciznę: <span style="color:green;">{{item.odpTrut}}%</span></li>
+            {% endif %}
+             {% if item.energia > 0 %}
+            <li > Energia <span>{{item.energia}}</span></li>
+            {% endif %}
+             {% if item.mana > 0 %}
+            <li > Mana <span >{{item.mana}}</span></li>
+            {% endif %}
+             {% if item.obnUniku > 0 %}
+            <li > Obniża unik przeciwnika o <span >{{item.obnUniku}} punktów procentowych</span></li>
+            {% endif %}
+            {% if item.obnCk > 0 %}
+            <li > Obniża szansę na cios krtyczny przeciwnika o <span >{{item.obnCk}} punktów procentowych</span></li>
+            {% endif %}
+            {% if item.przywr > 0 %}
+            <li > Przywraca <span >{{item.przywr}} punktów życia podczas walki</span></li>
+            {% endif %}
+             {% if item.przywr < 0 %}
+            <li > Obniża przywracanie punktów życia podczas walki o <span >{{item.przywr}}</span></li>
+            {% endif %}
+            {% if item.hp != None %}
+            <li >Życie: <span >{{item.hp}}</span></li>
+            {% endif %}
+             {% if item.wszystkieCechy > 0 %}
+            <li > Wszystkie cechy: <span >{{item.wszystkieCechy}}</span></li>
+            {% endif %}
+             {% if item.sil > 0 %}
+            <li > Siła <span >{{item.sil}}</span></li>
+            {% endif %}
+             {% if item.zren > 0 %}
+            <li > Zręczność <span >{{item.zren}}</span></li>
+            {% endif %}
+             {% if item.inte > 0 %}
+            <li > Intelekt <span >{{item.inte}}</span></li>
+            {% endif %}
+             {% if item.SA > 0 %}
+            <li > SA: <span >{{item.SA}}%</span></li>
+            {% endif %}
+             {% if item.obnSA > 0 %}
+            <li > Obniża SA przeciwnika o <span >{{item.obnSA}}%</span></li>
+            {% endif %}
+            <br>
+              {% if item.bonus != none%}
+            </br>
+            <span style="color:#dbb809;">{{item.bonus.bonusescription}}</span>
+            </br>
+            </br>
+            {%endif%}
+             {% if item.lvl > 0 %}
+            <li style="color:yellow;"> Wymagany poziom: <span >{{item.lvl}}</span></li>
+            {% endif %}
+            <li style="color:yellow">
+                {% if item.pal == True or item.woj == True or item.mag == True or item.tro == True or item.low == True or item.tan == True %}
+                Profesja:
+                {% endif %}
+                {% if item.pal == True and item.woj == True and item.mag == True and item.tro == True and item.low == True and item.tan == True %}
+                Wszystkie profesje
+                {% else %}
+                {% if item.pal == True %}
+                       paladyn
+                {%endif%}
+                {% if item.woj == True %}
+                      <span>   </span> wojownik
+                {%endif%}
+                {% if item.mag == True %}
+                       <span>   </span>mag
+                {%endif%}
+                {% if item.low == True %}
+                       <span>   </span>łowca
+                {%endif%}
+                {% if item.tro == True %}
+                       <span>   </span>tropiciel
+                {%endif%}
+                {% if item.tan == True %}
+                        <span>   </span>Tancerz ostrzy
+                {%endif%}
+                {%endif%}
+                <br>
+                <br>
+                <br>
+
+
+            </li>
+
+
+
+
+        </ul>
+        <div  class="row" ><div class="col-9 purplebg" style="padding-left:3%;"><span style="font-size:10px">(Szczegóły)</span> </div><div class="col-3 purplebg">Data: {{item.pub_date}} </div>
+    </div>
+    </div>
+
+    </div>
+
+
+
+</div>{% if comments != None %}
+        <div class="container">
+            <row><br><h2>Komentarze: </h2> <br>
+                <div class="col-2"></div>
+                <div class="col-10">
+            <ul>
+                {% for comment in comments %}
+                {% if comment.deleted == False %}
+                <li>
+                    <div class="row" style="background-color:#343434;"><div class="col-6">Dodany przez:<a href="{% url 'myapp:userdet' comment.author_id %} "> {{comment.author}} </a> </div>
+                        <div class="col-4"></div>
+                        <div class="col-2">{{comment.pub_date}}{% if comment.author == user %}<form style="display: inline-block;" action ="{% url 'myapp:comDel' item.id %}" method="POST">{% csrf_token %} <input name="comToDel" value="{{comment.id}}" style="display:none; "><input name = "delete" style = "  border: none; background-color: inherit; display: inline-block; float:left;"type="submit" value = "x"></form>{% endif %}
+                        </div></div>
+                    <br>
+                    <div class="row" style="padding-bottom: 20px;border-bottom:1px solid #151515;"><div class="col-2"></div><div class="col-10">{{comment.text |linebreaksbr}}</div><br>   </div>
+                    <br>
+                </li>
+                {% endif %}
+                {% endfor%}
+            </div></ul></row>
+        </div>
+        {% endif %}
+    <div class="container">
+        {% if user.is_authenticated %}
+        <br>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8" style=" padding-bottom:2%;">
+                <form action="" method="POST" autocomplete="off">
+                {% csrf_token %}
+                    <label for="text">Dodaj komentarz:</label>
+                    <textarea name="text" style="width:100%; resize:None;" rows = "10" placeholder="Treść komentarza..."></textarea>
+                <input type="submit" style="margin-top:1%;" value="Dodaj komentarz">
+            </form>
+            </div>
+            <div class="col-2"></div>
+        </div>
+
+        </div>
+        {% else %}
+            <br><br>
+          <div class="jumbotron purplebg">
+    <h2>Aby dodać komentarz musisz się <a href="{% url 'myapp:user_login' %}">Zalogować</a></h2>
+    <h6>lub dokonać <a href="{% url 'myapp:register' %}">rejestracji </a></h6>
+</div>
+        {% endif %}
+{% endblock %}

@@ -1,0 +1,76 @@
+
+form {
+  width: 100%;
+  padding: 10px;
+  margin-left: 7%;
+}
+
+input {
+  font-size: 20px;
+  background-color: #303030;
+  width: 80%;
+  margin-bottom: 5px;
+  padding: 6px;
+  border: none;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 20px;
+  color: #757575;
+  text-align: center;
+  display: block;
+  border: none;
+  box-shadow: 2px 2px 2px black;
+  }
+
+h2 {
+  text-align: center;
+  font-size: 40px;
+  text-shadow: 5px 5px black;
+}
+
+h3 {
+  text-align: left;
+  margin-left: 10%;
+  font-size: 15px;
+  text-shadow: 2px 2px black;
+}
+
+body {
+  font-family: Trebuchet MS;
+  background-color:#303030;
+  color: white;
+  background-size: cover;
+  text-align: center;
+}
+
+.button {
+ background-color: #303030;
+ margin-right: 30%;
+ border: none;
+ color: white;
+ padding: 16px 35.8%;
+ text-align: center;
+ font-size: 16px;
+ opacity: 0.6;
+ display: block;
+ text-decoration: none;
+ cursor: pointer;
+ box-shadow: 2px 2px 2px black;
+}
+.button:hover {opacity: 1}
+
+.log-form {
+ width: 100%;
+ min-width: 320px;
+ max-width: 475px;
+ background: #960374;
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ -webkit-transform: translate(-50%,-50%);
+ -moz-transform: translate(-50%,-50%);
+ -o-transform: translate(-50%,-50%);
+ -ms-transform: translate(-50%,-50%);
+transform: translate(-50%,-50%);
+
+  box-shadow: 5px 10px 10px rgba(0,0,0,25);
+}
