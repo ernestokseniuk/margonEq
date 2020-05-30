@@ -88,7 +88,7 @@ class customItem(models.Model):
     def __str__(self):
         return self.itemname
 class votes(models.Model):
-    voteItem = models.ForeignKey(customItem)
+    voteItem = models.ForeignKey(customItem, on_delete=models.CASCADE)
     voted = models.BooleanField(default=False)
     voter = models.ForeignKey(User, on_delete=models.CASCADE)
     vot_date = models.DateField(auto_now_add=True)
@@ -97,7 +97,7 @@ class votes(models.Model):
 class Comments(models.Model):
      topic = models.ForeignKey(customItem, on_delete=models.CASCADE)
      text = models.TextField(max_length=512,)
-     author = models.ForeignKey(User)
+     author = models.ForeignKey(User, on_delete=models.CASCADE)
      deleted = models.BooleanField(default=False)
      pub_date = models.DateField(auto_now_add=True)
      def __str__(self):
